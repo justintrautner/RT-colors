@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Colors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css" />
+    <style>
+        body{
+            background-color:;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var socket = io();
+
+            $('.green').click(function () {
+                socket.emit('green');
+            });
+            $('.blue').click(function () {
+                socket.emit('blue');
+            });
+            $('.pink').click(function () {
+                socket.emit('pink');
+            });
+            socket.on('setgreen', function () {
+                $("body").css("background-color", "green")
+            });
+            socket.on('setblue', function () {
+                $("body").css("background-color", "blue")
+            });
+            socket.on('setpink', function () {
+                $("body").css("background-color", "pink")
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <p></p>
+    <div class='row'>
+        <div class='col-sm-4'>
+            <button type="button" class="btn btn-lg btn-secondary green">Green</button>
+        </div>
+        <div class='col-sm-4'>
+            <button type="button" class="btn btn-lg btn-secondary blue">Blue</button>
+        </div>
+        <div class='col-sm-4'>
+            <button type="button" class="btn btn-lg btn-secondary pink">Pink</button>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
